@@ -14,9 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function() {
-    $('.home-page-link').mouseenter(function(){
-        $(self).toggleClass('.home-page-link-alt-style');
-    });
-});
