@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  get 'traps/show'
+  get '/' => 'traps#show'
+  get '/:trap_id/requests' => 'traps#show', as: 'trap'
+  get '/:trap_id/requests/:id' => 'requests#show', as: 'request'
 
-  get 'traps/capture'
-
-  get 'requests/show'
-
-  get 'request/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
