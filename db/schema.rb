@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121141027) do
+ActiveRecord::Schema.define(version: 20150128190821) do
 
   create_table "requests", force: true do |t|
-    t.datetime "request_date"
     t.string   "remote_ip"
     t.string   "request_method"
     t.string   "scheme"
@@ -24,10 +23,13 @@ ActiveRecord::Schema.define(version: 20150121141027) do
     t.string   "headers"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "trap_id"
   end
 
+  add_index "requests", ["trap_id"], name: "index_requests_on_trap_id", using: :btree
+
   create_table "traps", force: true do |t|
-    t.string   "trap_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

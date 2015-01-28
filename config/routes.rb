@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get '/' => 'traps#show'
-  get '/:trap_id/requests' => 'traps#show', as: 'trap'
-  get '/:trap_id/requests/:id' => 'requests#show', as: 'request'
+  get '/' => 'traps#index'
+  get '/:trap_id/requests' => 'traps#show'
+  get '/:trap_id/requests/:id' => 'requests#show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

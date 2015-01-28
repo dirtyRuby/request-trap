@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Request.delete_all
+
+Request.create(dom_name: 'mysecreturl1', request_date: Time.now, remote_ip: '123.123.123')
+Request.create(dom_name: 'mysecreturl2', request_date: Time.now, remote_ip: '124.124.124')

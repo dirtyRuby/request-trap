@@ -1,5 +1,6 @@
 class TrapsController < ApplicationController
-  def show
+  def index
+    @requests = Request.all
   end
 
   def capture
