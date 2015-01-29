@@ -1,6 +1,6 @@
 class TrapsController < ApplicationController
   def index
-    @requests = Request.all
+    @traps = Trap.all.order(:name)
   end
 
   def capture

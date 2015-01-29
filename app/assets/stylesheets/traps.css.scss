@@ -1,23 +1,41 @@
 // Place all the styles related to the traps controller here.
 // They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.trap-list {
+.table-title {
+  position: relative;
+  top: 20px;
+  height: 60px;
+  font-family: Comic Sans MS;
+  font-size: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #000000;
+  margin: auto;
+  display: inline-block;
+}
+
+.trap-list-table {
   width: 100%;
-
-
+  top: 30px;
+  position: relative;
+  border: 2px solid #555151;
   thead {
-    border: 5px solid #ffffff;
+    margin: auto;
     td {
       font-family: Comic Sans MS;
-      color: #d53d3d;
+      color: #ffffff;
       font-size: 20px;
       background-color: #555151;
-      border-radius: 5px;
       height: 25px;
     }
   }
 
-  tbody td {
-
+  tbody {
+    tr {
+      border: 1px solid #000000;
+      td {
+        font-family: "Lucida Console", Monaco, monospace;
+      }
+    }
   }
 }
