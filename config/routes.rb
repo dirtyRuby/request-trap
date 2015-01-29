@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/' => 'traps#index'
+  match '/:trap_id', to: 'traps#capture_request', via: :all
   get '/:trap_id/requests' => 'traps#show'
   get '/:trap_id/requests/:id' => 'requests#show'
 
