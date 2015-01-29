@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$("span[data-link]").click(function(){
+    window.location = $(this).data("link");
+});

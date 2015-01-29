@@ -37,6 +37,7 @@
       float: inherit;
       text-align: center;
       line-height: 50px;
+      cursor: pointer;
     }
 
     li:hover {
@@ -52,6 +53,8 @@
     font-family: Comic Sans MS;
     cursor: pointer;
     color: #000000;
+    text-decoration: none;
+    text-decoration-line: none;
   }
 }
 
