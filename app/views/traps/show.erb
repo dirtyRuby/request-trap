@@ -1,0 +1,31 @@
+<span class="table-title "><%= @trap.name %></span>
+<table class="trap-list-table">
+  <thead>
+    <tr>
+      <td>#</td>
+      <td>Created at</td>
+      <td>Remote ip</td>
+      <td>Request method</td>
+      <td>Scheme</td>
+      <td>Query string</td>
+      <td>Query params</td>
+      <td>Cookies</td>
+      <td>Headers</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requests.each_with_index do |request, index| %>
+    <tr>
+      <td><%= index + 1%></td>
+      <td><%= request.remote_ip %></td>
+      <td><%= request.request_method %></td>
+      <td><%= request.scheme %></td>
+      <td><%= request.query_string %></td>
+      <td><%= request.query_params %></td>
+      <td><%= request.cookies %></td>
+      <td><%= request.headers %></td>
+      <td><%= request.created_at.strftime("%F %T") %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
