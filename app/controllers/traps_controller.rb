@@ -1,6 +1,6 @@
 class TrapsController < ApplicationController
   def index
-    @traps = Trap.all.order(name: :desc)
+    @traps = Trap.all.order(created_at: :desc)
   end
 
   def show

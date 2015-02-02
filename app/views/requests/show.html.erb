@@ -1,18 +1,17 @@
-
-<% @request.each_with_index do |data, index| %>
-  <table>
+  <div class="table-title"><%= @request.trap.name %></div>
+  <table class="trap-list-table">
     <thead>
       <tr>
-        <td>
-          <%= index+1 %>
-        </td>
-        <td>
-          <%= data.remote_ip %>
-        </td>
+        <td>Parameter</td>
+        <td>Value</td>
       </tr>
     </thead>
     <tbody>
-
+    <% @request.attributes.each do |value| %>
+      <tr>
+        <td><%= value[0].to_s.capitalize.gsub("_", " ") %></td>
+        <td><%= value[1] %></td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
-<% end %>
