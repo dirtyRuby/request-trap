@@ -8,6 +8,7 @@
       <td>#</td>
       <td>Trap name</td>
       <td>Date</td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
         <td><%= index+1 %></td>
         <td><%= trap.name %></td>
         <td><%= trap.created_at.strftime("%F %T") %></td>
+        <td><%= link_to 'Go to', "#{trap.name}/requests" %></td>
       </tr>
   <% end %>
   </tbody>

@@ -8,9 +8,7 @@
 </head>
 <body class="<%= controller.controller_name %>">
   <div id="header">
-    <span data-link="<%= '/' %>"class="home-page-link">
-      Welcome to Request Trap tool.
-    </span>
+    <%= link_to 'Welcome to Request Trap tool.','/', class: 'home-page-link'%>
     <ul>
       <li>About</li>
       <li>Log in</li>

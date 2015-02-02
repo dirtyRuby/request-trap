@@ -5,12 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-=begin
+
 Trap.delete_all
 Request.delete_all
-Trap.create(name: 'secret1')
-Trap.create(name: 'secret2')
-=end
-
-Request.create(trap_id: 1, remote_ip: '123.123.123')
-Request.create(trap_id: 2, remote_ip: '124.124.124')

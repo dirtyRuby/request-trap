@@ -20,6 +20,7 @@
       <td><%= request.created_at.strftime("%F %T") %></td>
       <td><%= request.remote_ip %></td>
       <td><%= request.request_method %></td>
+      <td><%= link_to 'Details', "requests/#{request.id}" %></td>
       <td><%= request.scheme %></td>
       <td><%= request.query_string %></td>
       <td><%= request.query_params %></td>

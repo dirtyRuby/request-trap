@@ -54,7 +54,10 @@
     cursor: pointer;
     color: #000000;
     text-decoration: none;
-    text-decoration-line: none;
+  }
+
+  .home-page-link:hover {
+    color: #ffffff;
   }
 }
 

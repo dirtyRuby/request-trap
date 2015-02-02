@@ -14,9 +14,13 @@ class TrapsController < ApplicationController
   end
 
   def capture_request
-    trap = Trap.find_or_create_by(name: params[:trap_id])
-    data = {ip: request.remote_ip, method: request.method}
-    req = trap.requests.create(request_method: request.method, remote_ip: request.remote_ip)
+    if trap = Trap.find_or_create_by(name: params[:trap_id])
+      req = trap.requests.create(remote_ip: request.remote_ip, request_method: request.method,
+                                 scheme: request.scheme, query_string: request.query_string,
+                                 query_params: request.query_parameters,
+                                 cookies: request.cookies
+      )
+    end
   end
 
   private
