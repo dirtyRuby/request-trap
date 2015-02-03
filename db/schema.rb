@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128190821) do
+ActiveRecord::Schema.define(version: 20150203214036) do
 
   create_table "requests", force: true do |t|
     t.string   "remote_ip"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20150128190821) do
 
   create_table "traps", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "user_name"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
