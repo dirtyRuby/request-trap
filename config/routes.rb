@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
+  #
+  # Home page route.
+  #
   get '/' => 'traps#index'
+  #
+  # Capture request route.
+  #
   match '/:trap_id', to: 'traps#capture_request', via: :all
+  #
+  # View all requests captured.
+  #
   get '/:trap_id/requests' => 'traps#show'
+  #
+  # View certain request.
+  #
   get '/:trap_id/requests/:id' => 'requests#show'
 
 

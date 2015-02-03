@@ -15,3 +15,17 @@
 //= require turbolinks
 //= require websocket_rails/main
 //= require_tree .
+$(document).ready(function(){
+    // Select 'about' button. Click button.
+    $('#about-btn').click(function(){
+        // If block invisible then make visible with slide down.
+        if ( $('.about').css('display') == "none" ) {
+
+            $('.about').slideDown(1000);
+        }
+        // If block visible then make invisible with slide up.
+        else {
+            $('.about').slideUp(1000);
+        }
+    });
+});
