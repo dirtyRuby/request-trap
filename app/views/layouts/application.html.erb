@@ -11,8 +11,8 @@
     <%= link_to 'Welcome to Request Trap tool.','/', class: 'home-page-link'%>
     <ul>
       <li id="about-btn">About</li>
-      <li>Log in</li>
-      <li>Sign in</li>
+      <li id="login-btn">Log in</li>
+      <li id="sign-in-btn">Sign in</li>
     </ul>
   </div>
   <div class="about">
@@ -21,6 +21,9 @@
       integrate with external services, such as http clients, webhooks, etc.
     <p>The Requests Trap app ('Req App') provides these services with
       an endpoint to which they can send requests and notifications.
+  </div>
+  <div class="login">
+    <%= render template: 'sessions/new' %>
   </div>
   <div id="main">
     <%= yield %>
