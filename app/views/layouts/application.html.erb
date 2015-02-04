@@ -11,8 +11,18 @@
     <%= link_to 'Welcome to Request Trap tool.','/', class: 'home-page-link'%>
     <ul>
       <li id="about-btn">About</li>
-      <li id="login-btn">Log in</li>
-      <li id="sign-in-btn">Sign in</li>
+      <% unless session[:user_id] %>
+        <%= link_to new_user_path do %>
+            <li id="sign-in-btn">Sign in</li>
+        <% end %>
+        <li id="login-btn">Log in</li>
+      <% end %>
+      <% if session[:user_id] %>
+        <%= link_to logout_path, method: :delete do %>
+          <li>Logout</li>
+          <>
+        <% end %>
+      <% end %>
     </ul>
   </div>
   <div class="about">

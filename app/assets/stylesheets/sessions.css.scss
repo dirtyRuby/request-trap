@@ -4,7 +4,6 @@
 
 form {
   position: relative;
-
   margin: auto;
 
   legend {
@@ -20,6 +19,12 @@ form {
       input {
         position: relative;
         float: right;
+        font-family: "Comic Sans MS";
+      }
+
+      input:focus {
+        border-color: #730E15;
+        color: #730E15;
       }
 
       label {

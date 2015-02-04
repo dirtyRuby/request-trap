@@ -1,29 +1,44 @@
 Rails.application.routes.draw do
-
+  #
+  # Home page.
+  #
+  root 'traps#index'
+  #
+  # Admin page.
+  #
   get 'admin' => 'admin#index'
+  #
+  # Login, logout.
+  #
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
   end
-
+  #
+  # User scaffold.
+  #
   resources :users
+  #
+  # Login from any page. ???
+  #
+  post 'users/new' => 'sessions#create'
   #
   # Home page route.
   #
-  get '/' => 'traps#index'
+  get '/traps' => 'traps#index'
   #
   # Capture request route.
   #
-  match '/:trap_id', to: 'traps#capture_request', via: :all
+  match 'traps/:trap_id', to: 'traps#capture_request', via: :all
   #
   # View all requests captured.
   #
-  get '/:trap_id/requests' => 'traps#show'
+  get 'traps/:trap_id/requests' => 'traps#show'
   #
   # View certain request.
   #
-  get '/:trap_id/requests/:id' => 'requests#show'
+  get 'traps/:trap_id/requests/:id' => 'requests#show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

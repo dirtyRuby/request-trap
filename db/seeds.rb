@@ -8,3 +8,5 @@
 
 Trap.delete_all
 Request.delete_all
+
+User.create(user_name: 'admin', password: 'admin')
