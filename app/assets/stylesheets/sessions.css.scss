@@ -1,0 +1,30 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.user-name, .password {
+  margin-bottom: 10px;
+}
+
+.user-name input, .password input {
+  right: 100%;
+}
+
+.user-name label, .password label {
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+}
+
+.focused-label {
+  color: #730E15;
+}
+.focused-input {
+  border: 2px solid #730E15;
+}
+
+legend {
+  bottom: 80%;
+  border: 2px solid #666666;
+  padding: 10px;
+  margin: auto;
+  left: 50%;
+}

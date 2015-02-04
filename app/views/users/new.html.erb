@@ -2,4 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', users_path %>
+<%= link_to_if session[:user_id], 'Back', users_path %>
