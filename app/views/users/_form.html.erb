@@ -24,6 +24,10 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <% if session[:user_id] %>
+        <%= f.submit %>
+    <% else %>
+        <%= f.submit 'Register' %>
+    <% end %>
   </div>
 <% end %>

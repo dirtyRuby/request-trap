@@ -20,7 +20,12 @@
       <% if session[:user_id] %>
         <%= link_to logout_path, method: :delete do %>
           <li>Logout</li>
-          <>
+        <% end %>
+        <%= link_to users_path do%>
+            <li>Users</li>
+        <% end %>
+        <%= link_to '/traps' do%>
+            <li>Traps</li>
         <% end %>
       <% end %>
     </ul>
