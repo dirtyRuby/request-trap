@@ -3,11 +3,13 @@
  */
 
 $(document).ready(function() {
-    var line = $('.trap-list-table tbody tr')
-    line.mouseover(function() {
+    var tableLine = $('.trap-list-table tbody tr')
+    tableLine.mouseover(function() {
         $(this).addClass('focused');
     });
-    line.mouseout(function() {
+    tableLine.mouseout(function() {
        $(this).removeClass('focused');
-    })
+    });
+
+    slider('.edit-btn', '.edit-form');
 });

@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root 'traps#index'
 
   get 'admin' => 'admin#index'
-
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
@@ -11,21 +10,18 @@ Rails.application.routes.draw do
   end
 
   controller :traps do
-    get '/traps' => 'traps#index', as: :traps
+    match '/traps' => 'traps#index', as: :traps, via: :get
     match 'traps/:trap_id' => 'traps#capture_request', via: :all
-    get 'traps/:trap_id/requests' => 'traps#show', as: :trap
-    delete 'traps/:trap_id/:id' => 'traps#destroy'
+    match 'traps/:trap_id/requests' => 'traps#show', as: :trap, via: :get
+    match 'traps/:trap_id/:id' => 'traps#destroy', via: :delete
+    match 'traps/:trap_id/requests' => 'traps#update', via: :patch
   end
 
-  get 'traps/:trap_id/requests/:id' => 'requests#show', as: :request
-  delete 'traps/:trap_id/requests/:id' => 'requests#destroy'
+  match 'traps/:trap_id/requests/:id' => 'requests#show', as: :request, via: :get
+  match 'traps/:trap_id/requests/:id' => 'requests#destroy', via: :delete
 
   resources :users
-  resources :traps
   post 'users/new' => 'sessions#create'
-
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

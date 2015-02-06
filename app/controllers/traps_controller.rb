@@ -18,13 +18,21 @@ class TrapsController < ApplicationController
       @requests = @trap.requests.order(created_at: :desc)
     else
       respond_to do |format|
-        format.html { redirect_to '/', notice: "No trap #{params[:trap_id]} found."}
+        format.html { redirect_to traps_path, notice: "No trap #{params[:trap_id]} found."}
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if Trap.find_by(id: params[:trap_id]).update(trap_params)
+        format.html{redirect_to trap_path, notice: "Trap  was successfully renamed."}
       end
     end
   end
 
   def destroy
-    Trap.find_by(id: params[:id]).destroy
+    Trap.find_by(name: params[:trap_id]).destroy
     respond_to do |format|
       format.html { redirect_to '/traps', notice: 'Trap was successfully destroyed.' }
       format.json { head :no_content }
@@ -42,5 +50,10 @@ class TrapsController < ApplicationController
                                  cookies: request.cookies, headers: request.headers["Content-Type"]
       )
     end
+  end
+
+  private
+  def trap_params
+    params.require(:trap).permit(:name)
   end
 end

@@ -14,23 +14,26 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require websocket_rails/main
-//= require_tree .
+//= require_self
+//= require_tree
 
+
+function slider (owningClass, submissiveClass){
+    $(owningClass).click(function(){
+        // If block invisible then make visible with slide down.
+        if ($(submissiveClass).css('display') == "none" ) {
+            $(submissiveClass).slideDown(500);
+        }
+        // If block visible then make invisible with slide up.
+        else {
+            $(submissiveClass).slideUp(500);
+        }
+    });
+}
 $(document).ready(function(){
 
     // Function for top menu buttons.
-    function slider (owningClass, submissiveClass){
-        $(owningClass).click(function(){
-            // If block invisible then make visible with slide down.
-            if ($(submissiveClass).css('display') == "none" ) {
-                $(submissiveClass).slideDown(500);
-            }
-            // If block visible then make invisible with slide up.
-            else {
-                $(submissiveClass).slideUp(500);
-            }
-        });
-    }
+
     slider('#about-btn', '.about');
     slider('#login-btn', '.login');
 });
