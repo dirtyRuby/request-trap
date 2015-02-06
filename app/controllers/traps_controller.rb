@@ -34,7 +34,7 @@ class TrapsController < ApplicationController
   def destroy
     Trap.find_by(name: params[:trap_id]).destroy
     respond_to do |format|
-      format.html { redirect_to '/traps', notice: 'Trap was successfully destroyed.' }
+      format.html { redirect_to traps_path, notice: 'Trap was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -44,10 +44,14 @@ class TrapsController < ApplicationController
   def capture_request
     trap = Trap.find_or_create_by(name: params[:trap_id])
     if trap
+      header = Hash.new
+      if request.headers
+        request.headers.each { |key, value| header[key] = value if value.is_a?(string) }
+      end
       req = trap.requests.create(remote_ip: request.remote_ip, request_method: request.method,
                                  scheme: request.scheme, query_string: request.query_string,
                                  query_params: request.query_parameters,
-                                 cookies: request.cookies, headers: request.headers["Content-Type"]
+                                 cookies: request.cookies, headers: header
       )
     end
   end
@@ -56,4 +60,5 @@ class TrapsController < ApplicationController
   def trap_params
     params.require(:trap).permit(:name)
   end
+
 end

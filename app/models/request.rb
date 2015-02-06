@@ -1,4 +1,7 @@
 class Request < ActiveRecord::Base
+  serialize :parameters
+  serialize :headers
+
   #
   # One-to-many dependency.
   #
