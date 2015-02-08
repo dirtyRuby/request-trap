@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:logout_time] = Time.now
     redirect_to admin_path, notice: "User logged out."
   end
 

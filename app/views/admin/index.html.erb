@@ -1,4 +1,19 @@
 <div class="notice">
     <%= notice %>
 </div>
-Plees <%= link_to 'login', login_path %> or <%= link_to 'sign in', new_user_path %> to take advantage of this tool.
+<% unless session[:user_id] %>
+    Plees <%= link_to 'login', login_path %> or <%= link_to 'sign in', new_user_path %> to take advantage of this tool.
+<% else %>
+    <div>
+      <%= Time.now.strftime("%F %T") %>
+    </div>
+    <div class="new-traps-list"> We have <%=@new_traps.length  %> new traps.
+      <ul>
+        <% @new_traps.each do |trap| %>
+          <%= link_to trap_path(trap) do%>
+            <li><%= trap.name %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+<% end %>

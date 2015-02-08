@@ -30,6 +30,7 @@ function slider (owningClass, submissiveClass){
         }
     });
 }
+
 $(document).ready(function(){
 
     // Function for top menu buttons.

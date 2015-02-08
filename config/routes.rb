@@ -3,18 +3,18 @@ Rails.application.routes.draw do
   root 'traps#index'
 
   get 'admin' => 'admin#index'
+  post 'admin' => 'sessions#create'
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
   end
-
   controller :traps do
-    match '/traps' => 'traps#index', as: :traps, via: :get
+    get 'traps' => :index
     match 'traps/:trap_id' => 'traps#capture_request', via: :all
     match 'traps/:trap_id/requests' => 'traps#show', as: :trap, via: :get
-    match 'traps/:trap_id/:id' => 'traps#destroy', via: :delete
-    match 'traps/:trap_id/requests' => 'traps#update', via: :patch
+    delete 'traps/:trap_id/:id' => :destroy
+    patch 'traps/:trap_id/requests' => :update
   end
 
   match 'traps/:trap_id/requests/:id' => 'requests#show', as: :request, via: :get
