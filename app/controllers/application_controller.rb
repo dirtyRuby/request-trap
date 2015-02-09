@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   before_action :authorize
 
   protected
+  #
+  # Restrict access for unauthorized users.
+  #
   def authorize
     unless User.find_by(id: session[:user_id])
       redirect_to admin_path, notice: "Opps, looks like You're not logged in!"

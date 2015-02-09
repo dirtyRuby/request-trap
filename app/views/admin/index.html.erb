@@ -4,16 +4,17 @@
 <% unless session[:user_id] %>
     Plees <%= link_to 'login', login_path %> or <%= link_to 'sign in', new_user_path %> to take advantage of this tool.
 <% else %>
-    <div>
-      <%= Time.now.strftime("%F %T") %>
-    </div>
+
     <div class="new-traps-list"> We have <%=@new_traps.length  %> new traps.
       <ul>
         <% @new_traps.each do |trap| %>
-          <%= link_to trap_path(trap) do%>
+          <%= link_to trap_path(trap.name) do%>
             <li><%= trap.name %></li>
           <% end %>
         <% end %>
       </ul>
+    </div>
+    <div class="clock">
+      <%= render partial: 'admin/time' %>
     </div>
 <% end %>

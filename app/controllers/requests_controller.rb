@@ -1,16 +1,18 @@
 class RequestsController < ApplicationController
   skip_before_action :authorize
-  #
-  # View detailed information about certain request by id.
-  #
+
   def new
     @request = Request.new
   end
-
+  #
+  # GET /traps/:trap_id/requests/:id
+  #
   def show
     @request = Request.find_by(id: params[:id])
   end
-
+  #
+  # DELETE /traps/:trap_id/requests/:id
+  #
   def destroy
     @request = Request.find_by(id: params[:id])
     @request.destroy

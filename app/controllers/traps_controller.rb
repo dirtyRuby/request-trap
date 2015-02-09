@@ -1,7 +1,7 @@
 class TrapsController < ApplicationController
   skip_before_action :authorize, only: :capture_request
   #
-  # List all available traps action.
+  # GET /traps
   #
   def index
     @traps = Trap.all.order(created_at: :desc)
@@ -12,7 +12,9 @@ class TrapsController < ApplicationController
   def new
     @trap = Trap.new
   end
-
+  #
+  # GET /traps/:trap_id/requests
+  #
   def show
     if @trap = Trap.find_by_name(params[:trap_id])
       @requests = @trap.requests.order(created_at: :desc)
@@ -22,7 +24,9 @@ class TrapsController < ApplicationController
       end
     end
   end
-
+  #
+  # PATCH/PUT /traps/:trap_id/requests
+  #
   def update
     respond_to do |format|
       if Trap.find_by(id: params[:trap_id]).update(trap_params)
@@ -30,7 +34,9 @@ class TrapsController < ApplicationController
       end
     end
   end
-
+  #
+  # DELETE /traps/:trap_id/:id
+  #
   def destroy
     Trap.find_by(name: params[:trap_id]).destroy
     respond_to do |format|
