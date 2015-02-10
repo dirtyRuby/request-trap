@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 # Personal options
 # ---------------------
+ruby '2.1.5'
+gem 'rails_12factor'
 gem 'mysql2'
 gem 'thin'
 gem 'bootstrap-sass', '~> 3.2.0'
