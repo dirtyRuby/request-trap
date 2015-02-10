@@ -16,9 +16,9 @@ class SessionsController < ApplicationController
     user = User.find_by(user_name: params[:user_name])
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to admin_path
+      redirect_to admin_url
     else
-      redirect_to login_path
+      redirect_to login_url
     end
   end
   #
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     session[:logout_time] = Time.now
-    redirect_to admin_path, notice: "User logged out."
+    redirect_to admin_url, notice: "User logged out."
   end
 
   private

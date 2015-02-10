@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'traps#index'
 
-  get 'admin' => 'admin#index'
+  get 'admin' => 'admin#index', as: :admin
   post 'admin' => 'sessions#create'
   controller :sessions do
     get 'login' => :new
@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     patch 'traps/:trap_id/requests' => :update
   end
 
-  get 'traps/:trap_id/requests/:id' => 'requests#show', as: :request
+  controller :requests do
+    get 'traps/:trap_id/requests/:id' => :show
+  end
+
+
   delete 'traps/:trap_id/requests/:id' => 'requests#destroy'
 
   resources :users

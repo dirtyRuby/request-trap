@@ -2,7 +2,7 @@
 
 admin:
   user_name: admin
-  password_digest: <%= BCrypt::Password.create('secret') %>
+  password_digest: <%= BCrypt::Password.create('admin') %>
 
 visitor:
   user_name: MyString
