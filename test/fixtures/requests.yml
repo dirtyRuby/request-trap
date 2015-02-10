@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  request_date: 2015-01-21 01:19:36
   remote_ip: MyString
   request_method: MyString
   scheme: MyString
@@ -11,7 +10,6 @@ one:
   headers: MyString
 
 two:
-  request_date: 2015-01-21 01:19:36
   remote_ip: MyString
   request_method: MyString
   scheme: MyString

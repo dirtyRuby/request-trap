@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     patch 'traps/:trap_id/requests' => :update
   end
 
-  match 'traps/:trap_id/requests/:id' => 'requests#show', as: :request, via: :get
+  get 'traps/:trap_id/requests/:id' => 'requests#show', as: :request
   match 'traps/:trap_id/requests/:id' => 'requests#destroy', via: :delete
 
   resources :users

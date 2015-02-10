@@ -3,6 +3,6 @@
  */
 $(document).ready(function() {
     setInterval(function () {
-        $('.clock').load('clock');
+        $('.clock').load('admin/clock');
     }, 1000);
 });
