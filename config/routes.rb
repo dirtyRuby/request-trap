@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   get 'traps/:trap_id/requests/:id' => 'requests#show', as: :request
-  match 'traps/:trap_id/requests/:id' => 'requests#destroy', via: :delete
+  delete 'traps/:trap_id/requests/:id' => 'requests#destroy'
 
   resources :users
   post 'users/new' => 'sessions#create'
