@@ -50,9 +50,8 @@ class TrapsController < ApplicationController
   def capture_request
     trap = Trap.find_or_create_by(name: params[:trap_id])
     if trap
-      header = "No header"
+      header = Hash.new
       if request.headers
-        header = Hash.new
         request.headers.each { |key, value| header[key] = value.to_s unless value.is_a?(Hash) }
       end
       req = create_request(trap, request.remote_ip, request.method, request.scheme, request.query_string,

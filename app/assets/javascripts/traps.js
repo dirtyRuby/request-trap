@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function() {
-    var tableLine = $('.trap-list-table tbody tr')
+    var tableLine = $('.listing-table tbody tr')
     tableLine.mouseover(function() {
         $(this).addClass('focused');
     });

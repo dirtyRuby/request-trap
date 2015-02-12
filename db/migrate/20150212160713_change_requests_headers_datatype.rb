@@ -1,6 +1,6 @@
 class ChangeRequestsHeadersDatatype < ActiveRecord::Migration
   def up
-    change_column :requests, :headers, :binary
+    change_column :requests, :headers, :text
   end
 
   def down
