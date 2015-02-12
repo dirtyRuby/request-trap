@@ -21,7 +21,6 @@ class SessionsControllerTest < ActionController::TestCase
     admin = users(:admin)
     post :create, user_name: admin.user_name, password: "notadmin"
     assert_redirected_to login_url
-
   end
 
   test "should logout user/destroy session" do

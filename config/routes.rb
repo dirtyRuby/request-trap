@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'traps#index'
 
-  get 'admin' => 'admin#index', as: :admin
+  get 'admin' => 'admin#index'
   post 'admin' => 'sessions#create'
   controller :sessions do
     get 'login' => :new
