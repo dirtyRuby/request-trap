@@ -2,10 +2,10 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   setup do
-    @correct_user_name = "Coreect1"
-    @correct_password = "Correct1"
-    @incorrect_user_name_set = ['u*ser1R', '#user1R', '@user1R', '?user1R', '!user1R']
-    @incorrect_password_set = ['*password1R', '#password1R', '@password1R', '?password1R', '!password1R']
+    @correct_user_attribute = "Coreect1"
+    @incorrect_user_attribute = "incorrect"
+    @incorrect_user_name_set = %w(u*ser1R #user1R @user1R ?user1R !user1R)
+    @incorrect_password_set = %w(*password1R #password1R @password1R ?password1R !password1R)
   end
 
   test "should not duplicate users" do
@@ -20,28 +20,30 @@ class UserTest < ActiveSupport::TestCase
     assert user.errors[:password].any?
   end
 
-
-
-  test "user name must contain only numbers and letters" do
-    assert create_user(@correct_user_name, @correct_password).valid?
+  test "user name andpassword must contain only numbers and letters" do
+    assert create_user(@correct_user_attribute, @correct_user_attribute).valid?
   end
 
   test "user name must not contain non alphanumeric chars" do
     @incorrect_user_name_set.each do |user_name|
-      assert create_user(user_name, @correct_password).invalid?
+      assert create_user(user_name, @correct_user_attribute).invalid?
     end
   end
 
-  test "user name must contain at least one upper case letter, one lower case letter, one number" do
-
+  test "user name must contain at least one upper case letter, one lower case letter" do
+    assert create_user(@incorrect_user_attribute, @correct_user_attribute).invalid?
+    assert create_user(@correct_user_attribute, @correct_user_attribute).valid?
   end
 
-  test "password must contain only numbers and letters" do
-
+  test "password must contain at least one upper case letter, one lower case letter" do
+    assert create_user(@correct_user_attribute, @incorrect_user_attribute).invalid?
+    assert create_user(@correct_user_attribute, @correct_user_attribute).valid?
   end
 
-  test "password name must contain at least one upper case letter, one lower case letter, one number" do
-
+  test "password must not contain non alphanumeric chars" do
+    @incorrect_password_set.each do |password|
+      assert create_user(password, @correct_user_attribute).invalid?
+    end
   end
 
   private

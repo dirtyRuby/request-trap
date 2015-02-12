@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203214036) do
+ActiveRecord::Schema.define(version: 20150212160713) do
 
   create_table "requests", force: true do |t|
     t.string   "remote_ip"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150203214036) do
     t.string   "query_string"
     t.string   "query_params"
     t.string   "cookies"
-    t.string   "headers"
+    t.binary   "headers"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "trap_id"

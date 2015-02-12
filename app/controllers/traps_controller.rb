@@ -50,15 +50,13 @@ class TrapsController < ApplicationController
   def capture_request
     trap = Trap.find_or_create_by(name: params[:trap_id])
     if trap
-      header = Hash.new
+      header = "No header"
       if request.headers
-        request.headers.each { |key, value| header[key] = value if value.is_a?(string) }
+        header = Hash.new
+        request.headers.each { |key, value| header[key] = value.to_s unless value.is_a?(Hash) }
       end
-      req = trap.requests.create(remote_ip: request.remote_ip, request_method: request.method,
-                                 scheme: request.scheme, query_string: request.query_string,
-                                 query_params: request.query_parameters,
-                                 cookies: request.cookies, headers: header
-      )
+      req = create_request(trap, request.remote_ip, request.method, request.scheme, request.query_string,
+                           request.query_parameters, request.cookies, header)
     end
   end
 
@@ -67,4 +65,9 @@ class TrapsController < ApplicationController
     params.require(:trap).permit(:name)
   end
 
+  def create_request (trap, remote_ip, request_method, scheme, query_string, query_params, cookies, headers=nil)
+    trap.requests.create(remote_ip: remote_ip, request_method: request_method,
+                   scheme: scheme, query_string: query_string,
+                   query_params: query_params, cookies: cookies, headers: headers)
+  end
 end

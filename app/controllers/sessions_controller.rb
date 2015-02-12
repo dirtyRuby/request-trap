@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   #
   def new
     if session[:user_id] && user = User.find_by(id: session[:user_id])
-      redirect_to '/', notice: "User #{user.user_name} already logged in."
+      redirect_to admin_url, notice: "User #{user.user_name} already logged in."
     end
   end
   #
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to admin_url
     else
-      redirect_to login_url
+      redirect_to login_url, notice: "Incorrect user name or password."
     end
   end
   #

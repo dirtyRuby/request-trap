@@ -17,12 +17,8 @@ Rails.application.routes.draw do
     patch 'traps/:trap_id/requests' => :update
   end
 
-  controller :requests do
-    get 'traps/:trap_id/requests/:id' => :show
-  end
-
-
-  delete 'traps/:trap_id/requests/:id' => 'requests#destroy'
+  match 'traps/:trap_id/requests/:id' => 'requests#show', as: :request, via: :get
+  match 'traps/:trap_id/requests/:id' => 'requests#destroy', via: :delete
 
   resources :users
   post 'users/new' => 'sessions#create'
