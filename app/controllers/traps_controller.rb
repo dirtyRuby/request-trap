@@ -13,32 +13,32 @@ class TrapsController < ApplicationController
     @trap = Trap.new
   end
   #
-  # GET /traps/:trap_id/requests
+  # GET /traps/:trap_name/requests
   #
   def show
-    if @trap = Trap.find_by_name(params[:trap_id])
+    if @trap = Trap.find_by_name(params[:trap_name])
       @requests = @trap.requests.order(created_at: :desc)
     else
       respond_to do |format|
-        format.html { redirect_to traps_path, notice: "No trap #{params[:trap_id]} found."}
+        format.html { redirect_to traps_path, notice: "No trap #{params[:trap_name]} found."}
       end
     end
   end
   #
-  # PATCH/PUT /traps/:trap_id/requests
+  # PATCH/PUT /traps/:trap_name/requests
   #
   def update
     respond_to do |format|
-      if Trap.find_by(id: params[:trap_id]).update(trap_params)
+      if Trap.find_by(id: params[:trap_name]).update(trap_params)
         format.html{redirect_to trap_path, notice: "Trap  was successfully renamed."}
       end
     end
   end
   #
-  # DELETE /traps/:trap_id/:id
+  # DELETE /traps/:trap_name/:id
   #
   def destroy
-    Trap.find_by(name: params[:trap_id]).destroy
+    Trap.find_by(name: params[:trap_name]).destroy
     respond_to do |format|
       format.html { redirect_to traps_path, notice: 'Trap was successfully destroyed.' }
       format.json { head :no_content }
@@ -48,7 +48,7 @@ class TrapsController < ApplicationController
   # Capture trap/request and save to database action.
   #
   def capture_request
-    trap = Trap.find_or_create_by(name: params[:trap_id])
+    trap = Trap.find_or_create_by(name: params[:trap_name])
     if trap
       header = Hash.new
       if request.headers

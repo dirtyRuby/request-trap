@@ -19,7 +19,7 @@
   </table>
   <div class="listing-manipulation">
     <div>
-      <%= link_to 'Delete', requests_path(@request), method: :delete %>
+      <%= link_to 'Delete', requests_path(@request.trap.name, @request.id), method: :delete %>
     </div>
     <div>
       <%= link_to 'Back', trap_path %>
