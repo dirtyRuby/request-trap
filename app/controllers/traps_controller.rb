@@ -57,6 +57,8 @@ class TrapsController < ApplicationController
       req = create_request(trap, request.remote_ip, request.method, request.scheme, request.query_string,
                            request.query_parameters, request.cookies, header)
     end
+
+    WebsocketRails[:channel_name].trigger(:request_captured, trap)
   end
 
   private

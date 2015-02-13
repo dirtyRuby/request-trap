@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'traps#index'
+  #root 'traps#index'
 
   get 'admin' => 'admin#index'
   post 'admin' => 'sessions#create'
@@ -11,15 +11,15 @@ Rails.application.routes.draw do
   end
   controller :traps do
     get 'traps' => :index
-    match 'traps/:trap_id' => 'traps#capture_request', via: :all
-    match 'traps/:trap_id/requests' => 'traps#show', as: :trap, via: :get
+    match 'traps/:trap_id' => :capture_request, via: :all
+    match 'traps/:trap_id/requests' => :show, as: :trap, via: :get
     delete 'traps/:trap_id/:id' => :destroy
     patch 'traps/:trap_id/requests' => :update
   end
-
-  match 'traps/:trap_id/requests/:id' => 'requests#show', as: :request, via: :get
-  match 'traps/:trap_id/requests/:id' => 'requests#destroy', via: :delete
-
+  controller :requests do
+    match 'traps/:trap_id/requests/:id' => :show, as: :requests, via: :get
+    delete 'traps/:trap_id/requests/:id' => :destroy
+  end
   resources :users
   post 'users/new' => 'sessions#create'
 

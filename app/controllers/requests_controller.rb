@@ -15,9 +15,10 @@ class RequestsController < ApplicationController
   #
   def destroy
     @request = Request.find_by(id: params[:id])
+    id = @request.id
     @request.destroy
     respond_to do |format|
-      format.html { redirect_to trap_path, notice: "Request with ID #{@request.id} successfully deleted."}
+      format.html { redirect_to trap_path, notice: "Request with ID #{id} successfully deleted."}
     end
   end
 end
