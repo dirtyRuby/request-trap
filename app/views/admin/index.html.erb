@@ -2,7 +2,7 @@
     <%= notice %>
 </div>
 <% unless session[:user_id] %>
-    Plees <%= link_to 'login', login_path %> or <%= link_to 'sign in', new_user_path %> to take advantage of this tool.
+    Plees <%= link_to 'login', login_url %> or <%= link_to 'sign in', new_user_url %> to take advantage of this tool.
 <% else %>
 
     <div class="new-traps-list"> We have <%=@new_traps.length  %> new traps.
