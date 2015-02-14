@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :authorize
-  before_action      :first_user, except: :new
+  before_action      :first_user
   #
   # GET /login
   #
