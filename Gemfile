@@ -28,13 +28,14 @@ gem 'spring',        group: :development
 # Personal options
 # ---------------------
 ruby '2.1.5'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'mysql2'
-gem 'thin'
+gem 'puma'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'websocket-rails'
 gem 'pg'
+gem 'js-routes'
 # ---------------------
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

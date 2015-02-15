@@ -13,7 +13,7 @@
       <li id="about-btn">About</li>
       <% unless session[:user_id] %>
         <%= link_to new_user_path do %>
-            <li id="sign-in-btn">Sign in</li>
+          <li id="sign-in-btn">Sign in</li>
         <% end %>
         <li id="login-btn">Log in</li>
       <% end %>
@@ -21,11 +21,14 @@
         <%= link_to logout_path, method: :delete do %>
           <li>Logout</li>
         <% end %>
+        <%= link_to admin_url do %>
+          <li>Admin</li>
+        <% end %>
         <%= link_to users_path do %>
             <li>Users</li>
         <% end %>
         <%= link_to traps_url do %>
-            <li>Traps</li>
+            <li class="to-traps-btn">Traps</li>
         <% end %>
       <% end %>
     </ul>

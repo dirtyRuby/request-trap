@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require websocket_rails/main
-//= require_self
-//= require_tree
+//= require js-routes
+//= require_tree .
 
 
 function slider (owningClass, submissiveClass){
@@ -31,10 +31,20 @@ function slider (owningClass, submissiveClass){
     });
 }
 
+function clicker (owningClass, jsRoutePath, method){
+    $(owningClass).click(function(){
+        $.method(jsRoutePath);
+    });
+}
+
+function tiker (cssSelector, action) {
+    $(cssSelector).load(action)
+}
+
 $(document).ready(function(){
 
     // Function for top menu buttons.
-
+    clicker(".to-traps-btn", Routes.traps_path, get)
     slider('#about-btn', '.about');
     slider('#login-btn', '.login');
 });
